@@ -1,5 +1,5 @@
 import { INVALID_INPUT, COMMANDS } from './constants.js';
-import { up, cdHandler } from './navigation.js';
+import { up, cdHandler, lsHandler } from './navigation.js';
 import { printCurrentDir } from './utils/utils.js';
 
 export function startRepl(rl, homeDir, exit) {
@@ -22,6 +22,9 @@ export function startRepl(rl, homeDir, exit) {
         } else {
           console.log(INVALID_INPUT);
         }
+        break;
+      case COMMANDS.LS:
+        await lsHandler(currentDir);
         break;
       default:
         console.log(INVALID_INPUT);
